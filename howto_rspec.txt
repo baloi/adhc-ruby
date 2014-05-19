@@ -1,0 +1,3 @@
+> To run rspec:
+
+  $ clear && rspec rspec/*_spec.rb --color --format doc

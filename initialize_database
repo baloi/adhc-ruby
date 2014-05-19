@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+
+init_type = ARGV.shift
+
+#case init_type
+#when 'test'
+
+if init_type == 'test'
+  #puts "initializing test database"
+  $TEST = true
+  puts "removing existing test database"
+  `rm test.db`
+  puts "creating test database..."
+else
+  puts "removing existing database"
+  `rm adhc.db` 
+end
+
+
+require './model'
+create_database
