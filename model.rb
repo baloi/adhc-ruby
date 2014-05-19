@@ -12,20 +12,10 @@ else
   DB = Sequel.connect('sqlite://adhc.db')
 end
 
-#doc_codes = {
-#    pt_eval_marker:   0,
-#    pt_dc_marker:     1,
-#    ot_eval_marker:   2,
-#    ot_dc_marker:     3,
-#    done:             'Y',
-#    needs_new:        'N',
-#    none_yet:         '_'
-#}
 
 class DocumentationStatus
   PT_EVAL_MARKER = 0
   PT_DC_MARKER = 0
-  OT_EVAL_MARKER = 0
   OT_EVAL_MARKER = 0
   DONE = 'Y'
   NONE = '_'
