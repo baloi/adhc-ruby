@@ -1,8 +1,5 @@
 require 'sequel'
 
-DOCUMENT_DONE = 'D'
-NEEDS_DOCUMENT = 'N'
-UNKNOWN = '_'
 
 
 if $TEST == true
@@ -20,6 +17,7 @@ class DocumentationStatus
   DONE = 'Y'
   NONE = '_'
   NEEDS_NEW = 'N'
+  UNNECESSARY = 'U'
 
   def initialize
     @code = '____'

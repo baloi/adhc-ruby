@@ -7,6 +7,8 @@ describe DocumentationStatus do
     doc.code.should_not eq(nil)
   end
 
+  it "can record the need for PT DC"
+
   it "can record the status of OT eval" do
     doc = DocumentationStatus.new
     doc.has_ot_eval.should eq(false)
