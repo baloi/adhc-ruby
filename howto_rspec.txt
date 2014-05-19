@@ -10,3 +10,6 @@
     git commit -m "first commit"
     git remote add origin https://github.com/baloi/adhc.git
     git push -u origin master
+
+> cool zsh configuration:
+  https://github.com/robbyrussell/oh-my-zsh
