@@ -1,3 +1,12 @@
 > To run rspec:
 
   $ clear && rspec rspec/*_spec.rb --color --format doc
+
+> commit to git
+
+    touch README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin https://github.com/baloi/adhc.git
+    git push -u origin master
