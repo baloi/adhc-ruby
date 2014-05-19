@@ -7,6 +7,16 @@ describe DocumentationStatus do
     doc.code.should_not eq(nil)
   end
 
+  it "can record the status of OT eval" do
+    doc = DocumentationStatus.new
+    doc.has_ot_eval.should eq(false)
+    doc.has_ot_eval = true
+    doc.has_ot_eval.should eq(true)
+    doc.needs_new_ot_eval = true
+    doc.needs_new_ot_eval.should eq(true)
+   
+  end
+
   it "can record the status of PT eval" do
     doc = DocumentationStatus.new
     doc.has_pt_eval.should eq(false)
@@ -16,7 +26,7 @@ describe DocumentationStatus do
     doc.needs_new_pt_eval.should eq(true)
   end
 
-  describe DocumentationStatus, "#code" do
+  describe "#code" do
     it "should be initialized at '____'" do
       doc = DocumentationStatus.new
       doc.code.should eq('____')

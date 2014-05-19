@@ -29,9 +29,35 @@ class DocumentationStatus
     @code
   end
 
+  def needs_new_ot_eval
+    return @code[OT_EVAL_MARKER] == NEEDS_NEW
+  end
+
+  def needs_new_ot_eval=(needs_new)
+    if needs_new
+      @code[OT_EVAL_MARKER] = NEEDS_NEW
+    end
+  end
+
+  def has_ot_eval=(done) 
+    if done
+      @code[OT_EVAL_MARKER] = DONE   
+    end
+  end
+
+  def has_ot_eval
+    marker = @code[OT_EVAL_MARKER]
+    if marker == DONE 
+      return true
+    else
+      return false
+    end
+  end
+
   def needs_new_pt_eval
     return @code[PT_EVAL_MARKER] == NEEDS_NEW
   end
+
   def needs_new_pt_eval=(needs_new)
     if needs_new
       @code[PT_EVAL_MARKER] = NEEDS_NEW
