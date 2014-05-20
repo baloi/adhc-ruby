@@ -13,3 +13,9 @@
 
 > cool zsh configuration:
   https://github.com/robbyrussell/oh-my-zsh
+
+> things installed to make adhc run in linux
+  $ gem install sequel
+  $ gem install sqlite3
+  $ gem install sqlite3-ruby
+  $ gem install rspec
