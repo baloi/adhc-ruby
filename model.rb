@@ -27,6 +27,15 @@ class DocumentationStatus
     @code
   end
 
+  def pt_dc_done=(done)
+    if done
+      @code[PT_DC_MARKER] = DONE
+    end
+  end
+  def pt_dc_status
+    return @code[PT_DC_MARKER]
+  end
+
   def needs_new_ot_eval
     return @code[OT_EVAL_MARKER] == NEEDS_NEW
   end

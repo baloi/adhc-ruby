@@ -7,7 +7,21 @@ describe DocumentationStatus do
     doc.code.should_not eq(nil)
   end
 
-  it "can record the need for PT DC"
+  describe "#new_pt_eval_on()" do
+    it "should set PT_DC_STATUS to NONE"
+  end
+
+  describe "#pt_dc_status" do
+    it "is none at the beginning" do
+      doc = DocumentationStatus.new
+      doc.pt_dc_status.should eq(DocumentationStatus::NONE)     
+    end
+   
+    it "should be done if there is an UP-TO-DATE d/c" do
+      doc = DocumentationStatus.new
+      doc.pt_dc_done=true
+    end
+  end
 
   it "can record the status of OT eval" do
     doc = DocumentationStatus.new
