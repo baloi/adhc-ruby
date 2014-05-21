@@ -1,13 +1,40 @@
 require './rspec/spec_helper'
 require './model'
 
+describe PTEval do
+  it "has a date" do
+    pt_eval = PTEval.new
+    pt_eval.date_done = Date.today
+    pt_eval.save
+    
+    pe = PTEval.all.first
+    #puts "-->>#{pe.date_done}<<--"
+    pe.date_done.should eq(Date.today)
+  end
+
+  it "has a resident" do
+    pt_eval = PTEval.new
+    pt_eval.date_done = Date.today
+    pt_eval.save
+ 
+    resident = Resident.new
+    resident.lastname = "Tudor"
+    resident.save
+
+    pt_eval.resident_id = resident.id
+    pt_eval.save
+
+    pt_eval.resident.lastname.should eq('Tudor') 
+  end
+end
+
 describe DocumentationStatus do
   it "has a code" do
     doc = DocumentationStatus.new
     doc.code.should_not eq(nil)
   end
 
-  describe "#new_pt_eval_on()" do
+  describe "#new_pt_eval_on(date)" do
     it "should set PT_DC_STATUS to NONE"
   end
 

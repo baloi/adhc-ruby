@@ -11,6 +11,8 @@ describe Resident do
     clear_database
   end
 
+  it "has one or more pt evals"
+
   it "has documentation status" do
     documentation_status = 'EDED'
     resident = Resident.new

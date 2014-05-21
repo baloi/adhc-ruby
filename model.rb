@@ -1,5 +1,5 @@
 require 'sequel'
-
+require 'Date'
 
 
 if $TEST == true
@@ -9,6 +9,9 @@ else
   DB = Sequel.connect('sqlite://adhc.db')
 end
 
+class PTEval < Sequel::Model
+  many_to_one :resident
+end
 
 class DocumentationStatus
   PT_EVAL_MARKER = 0
@@ -117,6 +120,13 @@ def create_database
     String :documentation_status
     TrueClass :active
   end
+
+  DB.create_table :pt_evals do
+    primary_key :id
+    Integer :resident_id
+    Date :date_done
+  end
+
 end
 
 def clear_database
