@@ -1,5 +1,5 @@
 require 'sequel'
-require 'Date'
+require 'date'
 
 
 if $TEST == true
