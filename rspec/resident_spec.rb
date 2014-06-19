@@ -11,7 +11,15 @@ describe Resident do
     clear_database
   end
 
-  it "has one or more pt evals"
+  ## @@TODO: it "has one or more pt evals"
+
+  it "should have a list of days attending" do
+    resident = Resident.new
+    resident.lastname = "Lopez"
+    resident.firstname = "Jaena"
+    resident.save
+    resident.days_attending.should eq ('')
+  end
 
   it "has documentation status" do
     documentation_status = 'EDED'

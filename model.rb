@@ -107,6 +107,11 @@ class Resident < Sequel::Model
   def has_pt_eval=(pt_eval)
 
   end
+	
+  def before_create # or after_initialize
+    super
+    self.days_attending ||= ''
+  end
 end
 
 def create_database
@@ -117,6 +122,7 @@ def create_database
     primary_key :id
     String :lastname
     String :firstname
+    String :days_attending
     String :documentation_status
     TrueClass :active
   end
@@ -132,6 +138,7 @@ end
 def clear_database
   # delete * from residents
   DB[:residents].delete
+  DB[:pt_evals].delete
 end
 
 # @@INITIALIZE  run only on first?

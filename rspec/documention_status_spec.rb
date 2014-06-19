@@ -2,6 +2,16 @@ require './rspec/spec_helper'
 require './model'
 
 describe PTEval do
+
+  before(:each) do
+    clear_database
+  end
+
+  after(:each) do
+    clear_database
+  end
+
+
   it "has a date" do
     pt_eval = PTEval.new
     pt_eval.date_done = Date.today
@@ -29,6 +39,16 @@ describe PTEval do
 end
 
 describe DocumentationStatus do
+
+  before(:each) do
+    clear_database
+  end
+
+  after(:each) do
+    clear_database
+  end
+
+
   it "has a code" do
     doc = DocumentationStatus.new
     doc.code.should_not eq(nil)
