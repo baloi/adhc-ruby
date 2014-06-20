@@ -54,9 +54,9 @@ describe DocumentationStatus do
     doc.code.should_not eq(nil)
   end
 
-  describe "#new_pt_eval_on(date)" do
-    it "should set PT_DC_STATUS to NONE"
-  end
+  #describe "#new_pt_eval_on(date)" do
+  #  it "should set PT_DC_STATUS to NONE"
+  #end
 
   describe "#pt_dc_status" do
     it "is none at the beginning" do
