@@ -11,6 +11,14 @@ describe Resident do
     clear_database
   end
 
+  it "should have a primary PT"
+  
+  it "should have a primary OT"
+
+  it "should have a note due date"
+
+  it "should be able to identify if the note due date is past"
+
   it "should have insurance" do
     karpov = Resident.new
     karpov.lastname = "Karpov"
