@@ -15,8 +15,8 @@ end
 
 class DocumentationStatus
   PT_EVAL_MARKER = 0
-  PT_DC_MARKER = 0
-  OT_EVAL_MARKER = 0
+  PT_DC_MARKER = 1
+  OT_EVAL_MARKER = 2
   DONE = 'Y'
   NONE = '_'
   NEEDS_NEW = 'N'
@@ -99,7 +99,33 @@ class DocumentationStatus
   end
 end
 
+class Therapist < Sequel::Model
+  #many_to_many :residents
+end
+
 class Resident < Sequel::Model
+  def primary_pt
+    return Therapist[self.primary_pt_id]
+  end
+
+  def primary_ot
+    return Therapist[self.primary_ot_id]
+  end
+
+  def primary_pt=(pt)
+    self.primary_pt_id = pt.id
+  end
+
+  def primary_ot=(ot)
+    self.primary_ot_id = ot.id
+  end
+
+
+  def self.all_insured_by(insurance)
+    return self.where(:insurance => insurance)
+  end
+
+
   #def after_initialize
   #  super
   #  self.active ||= true
@@ -114,6 +140,21 @@ class Resident < Sequel::Model
   end
 end
 
+class Insurance
+  MCA = "MCA"
+  MCB = "MCB"
+  MCD = "MCD"
+  COMMERCIAL = "Commercial, Any"
+  CDPHP = "Commercial, CDPHP"
+
+  def self.is_commercial(insurance_name)
+    insurance_type = insurance_name.split(",")[0]
+    return insurance_type == 'Commercial'
+  end
+end
+
+
+
 def create_database
   # remove test database first
   #`rm ~/tinker/adhc/test.db`
@@ -125,7 +166,21 @@ def create_database
     String :days_attending
     String :documentation_status
     TrueClass :active
+
+    String :insurance
+    Date :admit_date
+    Date :note_due_date
+    Integer :primary_ot_id
+    Integer :primary_pt_id
   end
+
+  DB.create_table :therapists do
+    primary_key :id
+    String :lastname
+    String :firstname
+    String :discipline
+  end
+
 
   DB.create_table :pt_evals do
     primary_key :id
@@ -138,6 +193,7 @@ end
 def clear_database
   # delete * from residents
   DB[:residents].delete
+  DB[:therapists].delete
   DB[:pt_evals].delete
 end
 

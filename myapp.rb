@@ -11,23 +11,12 @@ get "/" do
 end
 
 get "/residents" do
-  #  @residents = Resident.all
   residents = Resident.all
-  #content_type = :json
 
-  #retVal = []
   retVal = "" 
   residents.each do |r|
-    retVal = retVal + "lastname=#{r.lastname},firstname=#{r.firstname},active=#{r.active}\n"
-  #  retVal.push ({ :lastname => r.lastname, 
-  #    :firstname => r.firstname, 
-  #    :active => r.active 
-  #  }.to_json)
+    retVal = retVal + "lastname=#{r.lastname},firstname=#{r.firstname},active=#{r.active},days_attending=#{r.days_attending}\n"
   end
-  #{ :lastname => residents.first.lastname, 
-  #    :firstname => residents.first.firstname, 
-  #    :active => residents.first.active 
-  #  }.to_json
 
   retVal
 end

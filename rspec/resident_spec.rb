@@ -11,7 +11,28 @@ describe Resident do
     clear_database
   end
 
-  ## @@TODO: it "has one or more pt evals"
+  it "should have insurance" do
+    karpov = Resident.new
+    karpov.lastname = "Karpov"
+    karpov.insurance = Insurance::MCB
+    karpov.save
+
+    kasparov = Resident.new
+    kasparov.lastname = "Kasparov"
+    kasparov.insurance = Insurance::MCA
+    kasparov.save
+
+    has_med_b = Resident.all_insured_by(Insurance::MCB)
+
+    has_med_b.count.should eq(1)
+    has_med_b.first.lastname.should eq('Karpov')
+
+    has_med_a = Resident.all_insured_by(Insurance::MCA)
+
+    has_med_a.count.should eq(1)
+    has_med_a.first.lastname.should eq("Kasparov")
+ 
+  end
 
   it "should have a list of days attending" do
     resident = Resident.new
